@@ -9,7 +9,7 @@ using System.Data;
 using Dapper;
 using System.Collections.Specialized;
 
-namespace Bookish.DataAccess
+namespace Bookish2.DataAccess
 {
     public class Book
     {
@@ -24,10 +24,25 @@ namespace Bookish.DataAccess
         public int UserID { get; set; }
         public DateTime ReturnDate { get; set; }
         public int BookID { get; set; }
+
+        public static List<Item> GetAll()
+        {
+            string SqlString = "SELECT TOP 100 [ItemID],[UserID],[ReturnDate],[BookID] FROM [Items]";
+            return (List<DataAccess.Item>)DataAccess.Connect.Db().Query<Item>(SqlString);
+        }
     }
 
     public class Connect
     {
-        IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+        public static IDbConnection Db()
+        {
+            return new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+        }
     }
+  
+
+        
+  
+  
 }
+

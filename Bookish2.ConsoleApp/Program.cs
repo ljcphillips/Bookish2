@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Bookish2.DataAccess;
+using Dapper;
 
 namespace Bookish2.ConsoleApp
 {
@@ -11,9 +12,8 @@ namespace Bookish2.ConsoleApp
     {
         static void Main(string[] args)
         {
-            string SqlString = "SELECT TOP 100 [ItemID],[UserID],[ReturnDate],[BookID] FROM [Items]";
-            var ourItems = (List<DataAccess.Item>)db.Query<Item>(SqlString);
-            foreach (var Item in ourItems)
+            var allItems = DataAccess.Item.GetAll();
+            foreach (var Item in allItems)
             {
                 Console.WriteLine(new string('*', 20));
                 Console.WriteLine("\nItem ID: " + Item.ItemID.ToString());
