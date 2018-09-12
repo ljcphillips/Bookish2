@@ -10,7 +10,7 @@ namespace Bookish2.Web.Controllers
     {
         public ActionResult Index()
         {
-            var items = DataAccess.Item.GetAll();
+            var items = DataAccess.ItemRepository.GetAll();
             ViewBag.Items = items;
 
             return View();

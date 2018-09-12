@@ -68,6 +68,7 @@ namespace Bookish2.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
+            User.Identity.GetUserId();
             if (!ModelState.IsValid)
             {
                 return View(model);

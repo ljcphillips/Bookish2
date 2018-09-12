@@ -6,15 +6,22 @@
 
 <div class="jumbotron">
     <h1>ASP.NET</h1>
+
     @foreach (var item in ViewBag.Items)
     {
-        <p>@item.ItemID</p>
-        <p>@item.UserID</p>
-        <p>@item.ReturnDate</p>
-        <p>@item.BookID</p>
-        <p>________________________________</p>
-    }
-</div>
+    <ul>
+        <li>@item.ItemID</li>
+        <li>@item.UserID</li>
+        <li>@item.ReturnDate</li>
+        <li>@item.BookID</li>
+        <li>@item.ISBN</li>
+        <li>@item.BookTitle</li>
+        <li>@item.BookAuthor</li>
+    </ul>
+    <hr>
+            }
+        
+    </div>
 
 <div class="row">
     <div class="col-md-4">

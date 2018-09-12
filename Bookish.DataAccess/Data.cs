@@ -11,23 +11,28 @@ using System.Collections.Specialized;
 
 namespace Bookish2.DataAccess
 {
-    public class Book
-    {
-        public int BookID { get; set; }
-        public char ISBN { get; set; }
-        public char BookTitle { get; set; }
-        public char BookAuthor { get; set; }
-    }
+    //public class Book
+    //{
+    //    public int BookID { get; set; }
+    //    public char ISBN { get; set; }
+    //    public char BookTitle { get; set; }
+    //    public char BookAuthor { get; set; }
+    //}
     public class Item
     {
         public int ItemID { get; set; }
         public int UserID { get; set; }
         public DateTime ReturnDate { get; set; }
         public int BookID { get; set; }
-
+        public string ISBN { get; set; }
+        public string BookTitle { get; set; }
+        public string BookAuthor { get; set; }
+    }
+    public class ItemRepository
+    {
         public static List<Item> GetAll()
         {
-            string SqlString = "SELECT TOP 100 [ItemID],[UserID],[ReturnDate],[BookID] FROM [Items]";
+            string SqlString = "SELECT * FROM Items INNER JOIN Books on Items.BookID=Books.BookID";
             return (List<DataAccess.Item>)DataAccess.Connect.Db().Query<Item>(SqlString);
         }
     }
